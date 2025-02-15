@@ -5,6 +5,7 @@ import * as path from "path";
 const STATUS_DONE = "✅ Done";
 const STATUS_WIP = "🚧 Work In Progress";
 const STATUS_NOT_IMPL = "❌ Not Implemented";
+const GITHUB_BASE_URL = "https://github.com/BlastLauncher/raycast-api-tracking/blob/main/";
 
 // Import ts-morph types for dynamic extraction
 import { Project, Node, SyntaxKind } from "ts-morph";
@@ -82,12 +83,24 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     if (match && match[1].trim() !== STATUS_NOT_IMPL) {
       status = match[1].trim();
     }
-    md += `| ${method.padEnd(27)} | ${status.padEnd(20)} |\n`;
+    const decls = exportedDeclarations.get(method);
+    let link = method;
+    if (decls && decls.length > 0) {
+      const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getPos());
+      link = `[${method}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
+    }
+    md += `| ${link.padEnd(27)} | ${status.padEnd(20)} |\n`;
   });
 
   // Generate module sections with tables
   for (const [moduleName, methods] of Object.entries(moduleMethods)) {
-    md += `\n## ${moduleName}\n\n| Method | Status |\n|--------|--------|\n`;
+    const declsModule = exportedDeclarations.get(moduleName);
+    let moduleLink = moduleName;
+    if (declsModule && declsModule.length > 0) {
+      const { line } = sourceFile.getLineAndColumnAtPos(declsModule[0].getPos());
+      moduleLink = `[${moduleName}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
+    }
+    md += `\n## ${moduleLink}\n\n| Method | Status |\n|--------|--------|\n`;
     methods.forEach(method => {
       let status = STATUS_NOT_IMPL;
       const regex = new RegExp(`\\|\\s*${method}\\s*\\|\\s*(.*?)\\s*\\|`);
@@ -95,7 +108,13 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       if (match && match[1].trim() !== STATUS_NOT_IMPL) {
         status = match[1].trim();
       }
-      md += `| ${method} | ${status} |\n`;
+      const decls = exportedDeclarations.get(method);
+      let methodLink = method;
+      if (decls && decls.length > 0) {
+        const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getPos());
+        methodLink = `[${method}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
+      }
+      md += `| ${methodLink} | ${status} |\n`;
     });
   }
 
@@ -137,7 +156,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     }
     return results;
   }
-  
+
   // Generate Other Exports section as table format
   md += `\n## Other Exports\n\n`;
   otherExports.forEach(item => {
@@ -162,7 +181,13 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       status = match[1].trim();
     }
     if (hasNested) {
-      md += `### ${item} - ${status}\n\n`;
+      const declsItem = exportedDeclarations.get(item);
+      let itemLink = item;
+      if (declsItem && declsItem.length > 0) {
+        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getPos());
+        itemLink = `[${item}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
+      }
+      md += `### ${itemLink} - ${status}\n\n`;
       md += `| Property                         | Status               |\n`;
       md += `|----------------------------------|----------------------|\n`;
       nestedTypes.forEach(typeName => {
@@ -173,10 +198,22 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
           propStatus = propMatch[1].trim();
         }
         const propName = typeName.replace(new RegExp('^' + item + '\\.'), "");
-        md += `| ${propName.padEnd(32)} | ${propStatus.padEnd(20)} |\n`;
+        const declsProp = exportedDeclarations.get(typeName);
+        let propLink = propName;
+        if (declsProp && declsProp.length > 0) {
+          const { line } = sourceFile.getLineAndColumnAtPos(declsProp[0].getPos());
+          propLink = `[${propName}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
+        }
+        md += `| ${propLink.padEnd(32)} | ${propStatus.padEnd(20)} |\n`;
       });
     } else {
-      md += `| ${item.padEnd(30)} | ${status.padEnd(20)} |\n`;
+      const declsItem = exportedDeclarations.get(item);
+      let itemLink = item;
+      if (declsItem && declsItem.length > 0) {
+        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getPos());
+        itemLink = `[${item}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
+      }
+      md += `| ${itemLink.padEnd(30)} | ${status.padEnd(20)} |\n`;
     }
   });
 

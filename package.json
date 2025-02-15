@@ -2,6 +2,9 @@
   "name": "raycast-api-tracking",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "start": "cp node_modules/@raycast/api/types/index.d.ts api-index.d.ts && bun run index.ts -w"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },

@@ -16,43 +16,43 @@
 
 | Method                      | Status               |
 |-----------------------------|----------------------|
-| captureException            | ❌ Not Implemented    |
-| clearSearchBar              | ❌ Not Implemented    |
-| closeMainWindow             | ❌ Not Implemented    |
-| confirmAlert                | ❌ Not Implemented    |
-| getApplications             | ❌ Not Implemented    |
-| getDefaultApplication       | ❌ Not Implemented    |
-| getFrontmostApplication     | ❌ Not Implemented    |
-| getPreferenceValues         | ❌ Not Implemented    |
-| getSelectedFinderItems      | ❌ Not Implemented    |
-| getSelectedText             | ❌ Not Implemented    |
-| launchCommand               | ❌ Not Implemented    |
-| open                        | ❌ Not Implemented    |
-| openCommandPreferences      | ❌ Not Implemented    |
-| openExtensionPreferences    | ❌ Not Implemented    |
-| popToRoot                   | ❌ Not Implemented    |
-| showHUD                     | ❌ Not Implemented    |
-| showInFinder                | ❌ Not Implemented    |
-| showToast                   | ❌ Not Implemented    |
-| trash                       | ❌ Not Implemented    |
-| updateCommandMetadata       | ❌ Not Implemented    |
-| useActionPanel              | ❌ Not Implemented    |
-| useNavigation               | ❌ Not Implemented    |
+| [captureException](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L896) | ❌ Not Implemented    |
+| [clearSearchBar](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L934) | ❌ Not Implemented    |
+| [closeMainWindow](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1128) | ❌ Not Implemented    |
+| [confirmAlert](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1283) | ❌ Not Implemented    |
+| [getApplications](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4202) | ❌ Not Implemented    |
+| [getDefaultApplication](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4221) | ❌ Not Implemented    |
+| [getFrontmostApplication](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4239) | ❌ Not Implemented    |
+| [getPreferenceValues](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4261) | ❌ Not Implemented    |
+| [getSelectedFinderItems](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4287) | ❌ Not Implemented    |
+| [getSelectedText](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4314) | ❌ Not Implemented    |
+| [launchCommand](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5890) | ❌ Not Implemented    |
+| [open](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7069) | ❌ Not Implemented    |
+| [openCommandPreferences](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7099) | ❌ Not Implemented    |
+| [openExtensionPreferences](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7104) | ❌ Not Implemented    |
+| [popToRoot](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7391) | ❌ Not Implemented    |
+| [showHUD](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7783) | ❌ Not Implemented    |
+| [showInFinder](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7817) | ❌ Not Implemented    |
+| [showToast](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7878) | ❌ Not Implemented    |
+| [trash](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8491) | ❌ Not Implemented    |
+| [updateCommandMetadata](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8558) | ❌ Not Implemented    |
+| [useActionPanel](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8580) | ❌ Not Implemented    |
+| [useNavigation](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8590) | ❌ Not Implemented    |
 
-## AI
+## [AI](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L434)
 
 | Method | Status |
 |--------|--------|
 | ask | ❌ Not Implemented |
 
-## BrowserExtension
+## [BrowserExtension](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L711)
 
 | Method | Status |
 |--------|--------|
 | getContent | ❌ Not Implemented |
 | getTabs | ❌ Not Implemented |
 
-## Clipboard
+## [Clipboard](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L948)
 
 | Method | Status |
 |--------|--------|
@@ -62,7 +62,7 @@
 | read | ❌ Not Implemented |
 | readText | ❌ Not Implemented |
 
-## LocalStorage
+## [LocalStorage](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6378)
 
 | Method | Status |
 |--------|--------|
@@ -72,7 +72,7 @@
 | removeItem | ❌ Not Implemented |
 | clear | ❌ Not Implemented |
 
-## WindowManagement
+## [WindowManagement](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8644)
 
 | Method | Status |
 |--------|--------|
@@ -83,7 +83,7 @@
 
 ## Other Exports
 
-### Action - ❌ Not Implemented
+### [Action](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L40) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -177,7 +177,7 @@
 | PickDate.Props.min               | ❌ Not Implemented    |
 | PickDate.Props.max               | ❌ Not Implemented    |
 | PickDate.Type                    | ❌ Not Implemented    |
-### ActionPanel - ❌ Not Implemented
+### [ActionPanel](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L170) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -202,42 +202,42 @@
 | Submenu.Props.throttle           | ❌ Not Implemented    |
 | Submenu.Props.onSearchTextChange | ❌ Not Implemented    |
 | Submenu.Children                 | ❌ Not Implemented    |
-| ActionPanelChildren            | ❌ Not Implemented    |
-| ActionPanelItem                | ❌ Not Implemented    |
-| ActionPanelItemProps           | ❌ Not Implemented    |
-| ActionPanelProps               | ❌ Not Implemented    |
-| ActionPanelSection             | ❌ Not Implemented    |
-| ActionPanelSectionChildren     | ❌ Not Implemented    |
-| ActionPanelSectionProps        | ❌ Not Implemented    |
-| ActionPanelState               | ❌ Not Implemented    |
-| ActionPanelSubmenu             | ❌ Not Implemented    |
-| ActionPanelSubmenuProps        | ❌ Not Implemented    |
-| Alert                          | ❌ Not Implemented    |
-| AlertActionOptions             | ❌ Not Implemented    |
-| AlertActionStyle               | ❌ Not Implemented    |
-| AlertOptions                   | ❌ Not Implemented    |
-| allLocalStorageItems           | ❌ Not Implemented    |
-| Application                    | ❌ Not Implemented    |
-| ArgumentsLaunchProps           | ❌ Not Implemented    |
-### Cache - ❌ Not Implemented
+| [ActionPanelChildren](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L201) | ❌ Not Implemented    |
+| [ActionPanelItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L213) | ❌ Not Implemented    |
+| [ActionPanelItemProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L215) | ❌ Not Implemented    |
+| [ActionPanelProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L308) | ❌ Not Implemented    |
+| [ActionPanelSection](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L330) | ❌ Not Implemented    |
+| [ActionPanelSectionChildren](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L330) | ❌ Not Implemented    |
+| [ActionPanelSectionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L335) | ❌ Not Implemented    |
+| [ActionPanelState](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L341) | ❌ Not Implemented    |
+| [ActionPanelSubmenu](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L356) | ❌ Not Implemented    |
+| [ActionPanelSubmenuProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L356) | ❌ Not Implemented    |
+| [Alert](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L560) | ❌ Not Implemented    |
+| [AlertActionOptions](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L648) | ❌ Not Implemented    |
+| [AlertActionStyle](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L659) | ❌ Not Implemented    |
+| [AlertOptions](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L659) | ❌ Not Implemented    |
+| [allLocalStorageItems](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L670) | ❌ Not Implemented    |
+| [Application](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L670) | ❌ Not Implemented    |
+| [ArgumentsLaunchProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L706) | ❌ Not Implemented    |
+### [Cache](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L793) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
 | Subscriber                       | ❌ Not Implemented    |
 | Subscription                     | ❌ Not Implemented    |
-| clearClipboard                 | ❌ Not Implemented    |
-| clearLocalStorage              | ❌ Not Implemented    |
-### Color - ❌ Not Implemented
+| [clearClipboard](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L929) | ❌ Not Implemented    |
+| [clearLocalStorage](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L934) | ❌ Not Implemented    |
+### [Color](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1158) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
 | ColorLike                        | ❌ Not Implemented    |
 | Raw                              | ❌ Not Implemented    |
-| ColorLike                      | ❌ Not Implemented    |
-| copyTextToClipboard            | ❌ Not Implemented    |
-| CopyToClipboardAction          | ❌ Not Implemented    |
-| CopyToClipboardActionProps     | ❌ Not Implemented    |
-### Detail - ❌ Not Implemented
+| [ColorLike](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1278) | ❌ Not Implemented    |
+| [copyTextToClipboard](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1643) | ❌ Not Implemented    |
+| [CopyToClipboardAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1653) | ❌ Not Implemented    |
+| [CopyToClipboardActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1653) | ❌ Not Implemented    |
+### [Detail](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L1916) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -266,13 +266,13 @@
 | Metadata.TagList.Item.Props.text | ❌ Not Implemented    |
 | Metadata.TagList.Item.Props.color | ❌ Not Implemented    |
 | Metadata.TagList.Item.Props.onAction | ❌ Not Implemented    |
-| DetailProps                    | ❌ Not Implemented    |
-| DynamicColor                   | ❌ Not Implemented    |
-| Environment                    | ❌ Not Implemented    |
-| environment                    | ❌ Not Implemented    |
-| FileIcon                       | ❌ Not Implemented    |
-| FileSystemItem                 | ❌ Not Implemented    |
-### Form - ❌ Not Implemented
+| [DetailProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L2063) | ❌ Not Implemented    |
+| [DynamicColor](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L2382) | ❌ Not Implemented    |
+| [Environment](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L2408) | ❌ Not Implemented    |
+| [environment](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L2504) | ❌ Not Implemented    |
+| [FileIcon](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L2504) | ❌ Not Implemented    |
+| [FileSystemItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L2560) | ❌ Not Implemented    |
+### [Form](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L2575) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -433,33 +433,33 @@
 | FilePicker.Props.onChange        | ❌ Not Implemented    |
 | FilePicker.Props.onBlur          | ❌ Not Implemented    |
 | FilePicker.Props.onFocus         | ❌ Not Implemented    |
-| FormCheckbox                   | ❌ Not Implemented    |
-| FormCheckboxProps              | ❌ Not Implemented    |
-| FormDatePicker                 | ❌ Not Implemented    |
-| FormDatePickerProps            | ❌ Not Implemented    |
-| FormDropdown                   | ❌ Not Implemented    |
-| FormDropdownItem               | ❌ Not Implemented    |
-| FormDropdownItemProps          | ❌ Not Implemented    |
-| FormDropdownProps              | ❌ Not Implemented    |
-| FormDropdownSection            | ❌ Not Implemented    |
-| FormDropdownSectionProps       | ❌ Not Implemented    |
-| FormItemProps                  | ❌ Not Implemented    |
-| FormLaunchProps                | ❌ Not Implemented    |
-| FormProps                      | ❌ Not Implemented    |
-| FormSeparator                  | ❌ Not Implemented    |
-| FormSeparatorProps             | ❌ Not Implemented    |
-| FormTagPicker                  | ❌ Not Implemented    |
-| FormTagPickerItem              | ❌ Not Implemented    |
-| FormTagPickerItemProps         | ❌ Not Implemented    |
-| FormTagPickerProps             | ❌ Not Implemented    |
-| FormTextArea                   | ❌ Not Implemented    |
-| FormTextAreaProps              | ❌ Not Implemented    |
-| FormTextField                  | ❌ Not Implemented    |
-| FormTextFieldProps             | ❌ Not Implemented    |
-| FormValue                      | ❌ Not Implemented    |
-| FormValues                     | ❌ Not Implemented    |
-| getLocalStorageItem            | ❌ Not Implemented    |
-### Grid - ❌ Not Implemented
+| [FormCheckbox](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3248) | ❌ Not Implemented    |
+| [FormCheckboxProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3248) | ❌ Not Implemented    |
+| [FormDatePicker](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3259) | ❌ Not Implemented    |
+| [FormDatePickerProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3259) | ❌ Not Implemented    |
+| [FormDropdown](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3270) | ❌ Not Implemented    |
+| [FormDropdownItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3275) | ❌ Not Implemented    |
+| [FormDropdownItemProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3275) | ❌ Not Implemented    |
+| [FormDropdownProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3281) | ❌ Not Implemented    |
+| [FormDropdownSection](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3292) | ❌ Not Implemented    |
+| [FormDropdownSectionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3292) | ❌ Not Implemented    |
+| [FormItemProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3357) | ❌ Not Implemented    |
+| [FormLaunchProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L3495) | ❌ Not Implemented    |
+| [FormProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4062) | ❌ Not Implemented    |
+| [FormSeparator](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4093) | ❌ Not Implemented    |
+| [FormSeparatorProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4093) | ❌ Not Implemented    |
+| [FormTagPicker](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4104) | ❌ Not Implemented    |
+| [FormTagPickerItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4109) | ❌ Not Implemented    |
+| [FormTagPickerItemProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4109) | ❌ Not Implemented    |
+| [FormTagPickerProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4115) | ❌ Not Implemented    |
+| [FormTextArea](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4126) | ❌ Not Implemented    |
+| [FormTextAreaProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4126) | ❌ Not Implemented    |
+| [FormTextField](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4137) | ❌ Not Implemented    |
+| [FormTextFieldProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4137) | ❌ Not Implemented    |
+| [FormValue](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4143) | ❌ Not Implemented    |
+| [FormValues](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4153) | ❌ Not Implemented    |
+| [getLocalStorageItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4261) | ❌ Not Implemented    |
+### [Grid](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4393) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -531,8 +531,8 @@
 | Section.Props.aspectRatio        | ❌ Not Implemented    |
 | Section.Props.fit                | ❌ Not Implemented    |
 | Section.Props.inset              | ❌ Not Implemented    |
-| Icon                           | ❌ Not Implemented    |
-### Image - ❌ Not Implemented
+| [Icon](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L4719) | ❌ Not Implemented    |
+### [Image](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5222) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -541,21 +541,21 @@
 | ImageLike                        | ❌ Not Implemented    |
 | Source                           | ❌ Not Implemented    |
 | Fallback                         | ❌ Not Implemented    |
-| ImageLike                      | ❌ Not Implemented    |
-| ImageMask                      | ❌ Not Implemented    |
-| ImageSource                    | ❌ Not Implemented    |
-### Keyboard - ❌ Not Implemented
+| [ImageLike](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5383) | ❌ Not Implemented    |
+| [ImageMask](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5388) | ❌ Not Implemented    |
+| [ImageSource](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5398) | ❌ Not Implemented    |
+### [Keyboard](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5716) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
 | KeyModifier                      | ❌ Not Implemented    |
 | KeyEquivalent                    | ❌ Not Implemented    |
-| KeyboardShortcut               | ❌ Not Implemented    |
-| KeyEquivalent                  | ❌ Not Implemented    |
-| KeyModifier                    | ❌ Not Implemented    |
-| LaunchProps                    | ❌ Not Implemented    |
-| LaunchType                     | ❌ Not Implemented    |
-### List - ❌ Not Implemented
+| [KeyboardShortcut](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5850) | ❌ Not Implemented    |
+| [KeyEquivalent](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5856) | ❌ Not Implemented    |
+| [KeyModifier](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5861) | ❌ Not Implemented    |
+| [LaunchProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5924) | ❌ Not Implemented    |
+| [LaunchType](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L5959) | ❌ Not Implemented    |
+### [List](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6059) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -642,14 +642,14 @@
 | Section.Props.id                 | ❌ Not Implemented    |
 | Section.Props.title              | ❌ Not Implemented    |
 | Section.Props.subtitle           | ❌ Not Implemented    |
-| ListItem                       | ❌ Not Implemented    |
-| ListItemProps                  | ❌ Not Implemented    |
-| ListProps                      | ❌ Not Implemented    |
-| ListSection                    | ❌ Not Implemented    |
-| ListSectionProps               | ❌ Not Implemented    |
-| LocalStorageValue              | ❌ Not Implemented    |
-| LocalStorageValues             | ❌ Not Implemented    |
-### MenuBarExtra - ❌ Not Implemented
+| [ListItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6163) | ❌ Not Implemented    |
+| [ListItemProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6163) | ❌ Not Implemented    |
+| [ListProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6308) | ❌ Not Implemented    |
+| [ListSection](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6372) | ❌ Not Implemented    |
+| [ListSectionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6372) | ❌ Not Implemented    |
+| [LocalStorageValue](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6498) | ❌ Not Implemented    |
+| [LocalStorageValues](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6503) | ❌ Not Implemented    |
+### [MenuBarExtra](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6542) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
@@ -675,47 +675,47 @@
 | Submenu.Props.title              | ❌ Not Implemented    |
 | Submenu.Props.icon               | ❌ Not Implemented    |
 | Submenu.Props.children           | ❌ Not Implemented    |
-| Navigation                     | ❌ Not Implemented    |
-| OAuth                          | ❌ Not Implemented    |
-| OpenAction                     | ❌ Not Implemented    |
-| OpenActionProps                | ❌ Not Implemented    |
-| OpenInBrowserAction            | ❌ Not Implemented    |
-| OpenInBrowserActionProps       | ❌ Not Implemented    |
-| OpenWithAction                 | ❌ Not Implemented    |
-| OpenWithActionProps            | ❌ Not Implemented    |
-| PasteAction                    | ❌ Not Implemented    |
-| PasteActionProps               | ❌ Not Implemented    |
-| pasteText                      | ❌ Not Implemented    |
-| PopToRootType                  | ❌ Not Implemented    |
-| Preference                     | ❌ Not Implemented    |
-| Preferences                    | ❌ Not Implemented    |
-| preferences                    | ❌ Not Implemented    |
-| PreferenceValues               | ❌ Not Implemented    |
-| PushAction                     | ❌ Not Implemented    |
-| PushActionProps                | ❌ Not Implemented    |
-| randomId                       | ❌ Not Implemented    |
-| removeLocalStorageItem         | ❌ Not Implemented    |
-| render                         | ❌ Not Implemented    |
-| setLocalStorageItem            | ❌ Not Implemented    |
-| ShowInFinderAction             | ❌ Not Implemented    |
-| ShowInFinderActionProps        | ❌ Not Implemented    |
-| specialKeys                    | ❌ Not Implemented    |
-| SubmitFormAction               | ❌ Not Implemented    |
-| SubmitFormActionProps          | ❌ Not Implemented    |
-| Toast                          | ❌ Not Implemented    |
-| ToastActionOptions             | ❌ Not Implemented    |
-| ToastOptions                   | ❌ Not Implemented    |
-| ToastStyle                     | ❌ Not Implemented    |
-### Tool - ❌ Not Implemented
+| [Navigation](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6727) | ❌ Not Implemented    |
+| [OAuth](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L6763) | ❌ Not Implemented    |
+| [OpenAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7093) | ❌ Not Implemented    |
+| [OpenActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7093) | ❌ Not Implemented    |
+| [OpenInBrowserAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7119) | ❌ Not Implemented    |
+| [OpenInBrowserActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7119) | ❌ Not Implemented    |
+| [OpenWithAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7204) | ❌ Not Implemented    |
+| [OpenWithActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7204) | ❌ Not Implemented    |
+| [PasteAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7297) | ❌ Not Implemented    |
+| [PasteActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7297) | ❌ Not Implemented    |
+| [pasteText](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7339) | ❌ Not Implemented    |
+| [PopToRootType](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7418) | ❌ Not Implemented    |
+| [Preference](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7436) | ❌ Not Implemented    |
+| [Preferences](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7508) | ❌ Not Implemented    |
+| [preferences](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7518) | ❌ Not Implemented    |
+| [PreferenceValues](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7523) | ❌ Not Implemented    |
+| [PushAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7540) | ❌ Not Implemented    |
+| [PushActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7540) | ❌ Not Implemented    |
+| [randomId](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7603) | ❌ Not Implemented    |
+| [removeLocalStorageItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7608) | ❌ Not Implemented    |
+| [render](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7613) | ❌ Not Implemented    |
+| [setLocalStorageItem](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7783) | ❌ Not Implemented    |
+| [ShowInFinderAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7841) | ❌ Not Implemented    |
+| [ShowInFinderActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7841) | ❌ Not Implemented    |
+| [specialKeys](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L7946) | ❌ Not Implemented    |
+| [SubmitFormAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8045) | ❌ Not Implemented    |
+| [SubmitFormActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8048) | ❌ Not Implemented    |
+| [Toast](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8261) | ❌ Not Implemented    |
+| [ToastActionOptions](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8405) | ❌ Not Implemented    |
+| [ToastOptions](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8411) | ❌ Not Implemented    |
+| [ToastStyle](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8422) | ❌ Not Implemented    |
+### [Tool](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8450) - ❌ Not Implemented
 
 | Property                         | Status               |
 |----------------------------------|----------------------|
 | Confirmation                     | ❌ Not Implemented    |
-| TrashAction                    | ❌ Not Implemented    |
-| TrashActionProps               | ❌ Not Implemented    |
-| unstable_AI                    | ❌ Not Implemented    |
-| useId                          | ❌ Not Implemented    |
-| useUnstableAI                  | ❌ Not Implemented    |
+| [TrashAction](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8517) | ❌ Not Implemented    |
+| [TrashActionProps](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8517) | ❌ Not Implemented    |
+| [unstable_AI](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8558) | ❌ Not Implemented    |
+| [useId](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8590) | ❌ Not Implemented    |
+| [useUnstableAI](https://github.com/BlastLauncher/raycast-api-tracking/blob/main/api-index.d.ts#L8644) | ❌ Not Implemented    |
 
 
 ---
