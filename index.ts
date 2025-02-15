@@ -55,7 +55,7 @@ exportedDeclarations.forEach((declarations, exportName) => {
 });
 
 // Function to generate the markdown content
-function generateDashboardMarkdown(): string {
+function generateDashboardMarkdown(oldContent: string = ""): string {
   let md = `# API Progress Dashboard
 
 ## Table of Contents
@@ -76,14 +76,26 @@ function generateDashboardMarkdown(): string {
 |-----------------------------|----------------------|\n`;
 
   globalFunctions.forEach(method => {
-    md += `| ${method.padEnd(27)} | ${STATUS_NOT_IMPL.padEnd(20)} |\n`;
+    let status = STATUS_NOT_IMPL;
+    const regex = new RegExp(`\\|\\s*${method}\\s*\\|\\s*(.*?)\\s*\\|`);
+    const match = oldContent.match(regex);
+    if (match && match[1].trim() !== STATUS_NOT_IMPL) {
+      status = match[1].trim();
+    }
+    md += `| ${method.padEnd(27)} | ${status.padEnd(20)} |\n`;
   });
 
   // Generate module sections with tables
   for (const [moduleName, methods] of Object.entries(moduleMethods)) {
     md += `\n## ${moduleName}\n\n| Method | Status |\n|--------|--------|\n`;
     methods.forEach(method => {
-      md += `| ${method} | ${STATUS_NOT_IMPL} |\n`;
+      let status = STATUS_NOT_IMPL;
+      const regex = new RegExp(`\\|\\s*${method}\\s*\\|\\s*(.*?)\\s*\\|`);
+      const match = oldContent.match(regex);
+      if (match && match[1].trim() !== STATUS_NOT_IMPL) {
+        status = match[1].trim();
+      }
+      md += `| ${method} | ${status} |\n`;
     });
   }
 
@@ -106,7 +118,30 @@ function generateDashboardMarkdown(): string {
   return md;
 }
 
-// Write the generated markdown to dashboard.md
+const args = process.argv.slice(2);
+
+function showHelp() {
+  console.log("Usage: index.ts [options]");
+  console.log("");
+  console.log("Options:");
+  console.log("  -w, --write   Regenerate dashboard markdown, overwriting dashboard.md file");
+  console.log("  -h, --help    Show this help message");
+}
+
+if (args.includes("-h") || args.includes("--help")) {
+  showHelp();
+  process.exit(0);
+}
+
 const outputPath = path.join(__dirname, "dashboard.md");
-fs.writeFileSync(outputPath, generateDashboardMarkdown(), "utf8");
-console.log("Dashboard markdown generated at:", outputPath);
+
+if (args.includes("-w") || args.includes("--write")) {
+  fs.writeFileSync(
+    outputPath,
+    generateDashboardMarkdown(fs.existsSync(outputPath) ? fs.readFileSync(outputPath, "utf8") : ""),
+    "utf8"
+  );
+  console.log("Dashboard markdown generated at:", outputPath);
+} else {
+  console.log("Skipping markdown generation. Use -w or --write to regenerate dashboard.md file.");
+}
