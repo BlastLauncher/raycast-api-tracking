@@ -99,10 +99,44 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     });
   }
 
+  // Helper function to recursively get nested type exports from a module declaration
+  function getNestedTypes(moduleDecl: any, prefix: string = ""): string[] {
+    let results: string[] = [];
+    const body = moduleDecl.getBody();
+    if (body && Node.isModuleBlock(body)) {
+      body.getStatements().forEach(stmt => {
+        if (Node.isModuleDeclaration(stmt)) {
+          const newPrefix = prefix ? `${prefix}.${stmt.getName()}` : stmt.getName();
+          results = results.concat(getNestedTypes(stmt, newPrefix));
+        } else {
+          const text = stmt.getText();
+          const match = text.match(/export type ([A-Za-z0-9_]+)/);
+          if (match) {
+            const typeName = match[1];
+            results.push(prefix ? `${prefix}.${typeName}` : typeName);
+          }
+        }
+      });
+    }
+    return results;
+  }
+  
   // Generate Other Exports section
   md += `\n## Other Exports\n\n`;
   otherExports.forEach(item => {
-    md += `- **${item}**\n`;
+    md += `- **${item}**`;
+    const decls = exportedDeclarations.get(item);
+    if (decls) {
+      decls.forEach(decl => {
+        if (Node.isModuleDeclaration(decl)) {
+          const types = getNestedTypes(decl, item);
+          types.forEach(typeName => {
+            md += `\n  - **${typeName}**`;
+          });
+        }
+      });
+    }
+    md += `\n`;
   });
 
   // Legend

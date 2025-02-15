@@ -84,7 +84,29 @@
 ## Other Exports
 
 - **Action**
+  - **Action.Props**
+  - **Action.Style**
+  - **Action.CopyToClipboard.Props**
+  - **Action.CreateQuicklink.Props**
+  - **Action.CreateSnippet.Props**
+  - **Action.Open.Props**
+  - **Action.OpenInBrowser.Props**
+  - **Action.OpenWith.Props**
+  - **Action.Paste.Props**
+  - **Action.Push.Props**
+  - **Action.ShowInFinder.Props**
+  - **Action.SubmitForm.Props**
+  - **Action.Trash.Props**
+  - **Action.ToggleQuickLook.Props**
+  - **Action.PickDate.Props**
+  - **Action.PickDate.Type**
 - **ActionPanel**
+  - **ActionPanel.Props**
+  - **ActionPanel.Children**
+  - **ActionPanel.Section.Props**
+  - **ActionPanel.Section.Children**
+  - **ActionPanel.Submenu.Props**
+  - **ActionPanel.Submenu.Children**
 - **ActionPanelChildren**
 - **ActionPanelItem**
 - **ActionPanelItemProps**
@@ -103,14 +125,25 @@
 - **Application**
 - **ArgumentsLaunchProps**
 - **Cache**
+  - **Cache.Subscriber**
+  - **Cache.Subscription**
 - **clearClipboard**
 - **clearLocalStorage**
 - **Color**
+  - **Color.ColorLike**
+  - **Color.Raw**
 - **ColorLike**
 - **copyTextToClipboard**
 - **CopyToClipboardAction**
 - **CopyToClipboardActionProps**
 - **Detail**
+  - **Detail.Props**
+  - **Detail.Metadata.Props**
+  - **Detail.Metadata.Label.Props**
+  - **Detail.Metadata.Separator.Props**
+  - **Detail.Metadata.Link.Props**
+  - **Detail.Metadata.TagList.Props**
+  - **Detail.Metadata.TagList.Item.Props**
 - **DetailProps**
 - **DynamicColor**
 - **Environment**
@@ -118,6 +151,36 @@
 - **FileIcon**
 - **FileSystemItem**
 - **Form**
+  - **Form.ItemProps**
+  - **Form.Value**
+  - **Form.Values**
+  - **Form.Props**
+  - **Form.ItemReference**
+  - **Form.Event**
+  - **Form.Event.Type**
+  - **Form.TextField**
+  - **Form.TextField.Props**
+  - **Form.LinkAccessory.Props**
+  - **Form.PasswordField**
+  - **Form.PasswordField.Props**
+  - **Form.TextArea**
+  - **Form.TextArea.Props**
+  - **Form.Description.Props**
+  - **Form.Separator.Props**
+  - **Form.Checkbox**
+  - **Form.Checkbox.Props**
+  - **Form.DatePicker**
+  - **Form.DatePicker.Props**
+  - **Form.DatePicker.Type**
+  - **Form.Dropdown**
+  - **Form.Dropdown.Props**
+  - **Form.Dropdown.Section.Props**
+  - **Form.Dropdown.Item.Props**
+  - **Form.TagPicker**
+  - **Form.TagPicker.Props**
+  - **Form.TagPicker.Item.Props**
+  - **Form.FilePicker**
+  - **Form.FilePicker.Props**
 - **FormCheckbox**
 - **FormCheckboxProps**
 - **FormDatePicker**
@@ -145,18 +208,52 @@
 - **FormValues**
 - **getLocalStorageItem**
 - **Grid**
+  - **Grid.Props**
+  - **Grid.AspectRatio**
+  - **Grid.Inset**
+  - **Grid.Fit**
+  - **Grid.ItemSize**
+  - **Grid.EmptyView.Props**
+  - **Grid.Dropdown.Props**
+  - **Grid.Dropdown.Item.Props**
+  - **Grid.Dropdown.Section.Props**
+  - **Grid.Item.Accessory**
+  - **Grid.Item.Props**
+  - **Grid.Section.Props**
 - **Icon**
 - **Image**
+  - **Image.URL**
+  - **Image.Asset**
+  - **Image.ImageLike**
+  - **Image.Source**
+  - **Image.Fallback**
 - **ImageLike**
 - **ImageMask**
 - **ImageSource**
 - **Keyboard**
+  - **Keyboard.KeyModifier**
+  - **Keyboard.KeyEquivalent**
 - **KeyboardShortcut**
 - **KeyEquivalent**
 - **KeyModifier**
 - **LaunchProps**
 - **LaunchType**
 - **List**
+  - **List.Props**
+  - **List.EmptyView.Props**
+  - **List.Dropdown.Props**
+  - **List.Dropdown.Item.Props**
+  - **List.Dropdown.Section.Props**
+  - **List.Item.Accessory**
+  - **List.Item.Props**
+  - **List.Item.Detail.Props**
+  - **List.Item.Detail.Metadata.Props**
+  - **List.Item.Detail.Metadata.Label.Props**
+  - **List.Item.Detail.Metadata.Separator.Props**
+  - **List.Item.Detail.Metadata.Link.Props**
+  - **List.Item.Detail.Metadata.TagList.Props**
+  - **List.Item.Detail.Metadata.TagList.Item.Props**
+  - **List.Section.Props**
 - **ListItem**
 - **ListItemProps**
 - **ListProps**
@@ -165,6 +262,11 @@
 - **LocalStorageValue**
 - **LocalStorageValues**
 - **MenuBarExtra**
+  - **MenuBarExtra.Props**
+  - **MenuBarExtra.ActionEvent**
+  - **MenuBarExtra.Item.Props**
+  - **MenuBarExtra.Section.Props**
+  - **MenuBarExtra.Submenu.Props**
 - **Navigation**
 - **OAuth**
 - **OpenAction**
@@ -197,6 +299,7 @@
 - **ToastOptions**
 - **ToastStyle**
 - **Tool**
+  - **Tool.Confirmation**
 - **TrashAction**
 - **TrashActionProps**
 - **unstable_AI**
