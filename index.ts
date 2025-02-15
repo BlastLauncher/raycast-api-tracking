@@ -113,7 +113,24 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
           const match = text.match(/export type ([A-Za-z0-9_]+)/);
           if (match) {
             const typeName = match[1];
-            results.push(prefix ? `${prefix}.${typeName}` : typeName);
+            if (typeName === "Props") {
+              results.push(prefix ? `${prefix}.Props` : "Props");
+              // If this is a TypeAliasDeclaration, try to extract its properties recursively
+              if (stmt.getKindName() === "TypeAliasDeclaration") {
+                try {
+                  const typeAlias = stmt;
+                  const propSymbols = typeAlias.getType().getProperties();
+                  propSymbols.forEach(prop => {
+                    const propName = prop.getName();
+                    results.push(prefix ? `${prefix}.Props.${propName}` : `Props.${propName}`);
+                  });
+                } catch (e) {
+                  // Ignore errors if properties cannot be extracted
+                }
+              }
+            } else {
+              results.push(prefix ? `${prefix}.${typeName}` : typeName);
+            }
           }
         }
       });
