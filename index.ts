@@ -121,22 +121,46 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     return results;
   }
   
-  // Generate Other Exports section
+  // Generate Other Exports section as table format
   md += `\n## Other Exports\n\n`;
   otherExports.forEach(item => {
-    md += `- **${item}**`;
     const decls = exportedDeclarations.get(item);
+    let nestedTypes: string[] = [];
+    let hasNested = false;
     if (decls) {
       decls.forEach(decl => {
         if (Node.isModuleDeclaration(decl)) {
           const types = getNestedTypes(decl, item);
-          types.forEach(typeName => {
-            md += `\n  - **${typeName}**`;
-          });
+          if (types.length > 0) {
+            nestedTypes = nestedTypes.concat(types);
+            hasNested = true;
+          }
         }
       });
     }
-    md += `\n`;
+    let status = STATUS_NOT_IMPL;
+    const regex = new RegExp(`\\|\\s*${item}\\s*\\|\\s*(.*?)\\s*\\|`);
+    const match = oldContent.match(regex);
+    if (match && match[1].trim() !== STATUS_NOT_IMPL) {
+      status = match[1].trim();
+    }
+    if (hasNested) {
+      md += `### ${item} - ${status}\n\n`;
+      md += `| Property                         | Status               |\n`;
+      md += `|----------------------------------|----------------------|\n`;
+      nestedTypes.forEach(typeName => {
+        let propStatus = STATUS_NOT_IMPL;
+        const propRegex = new RegExp(`\\|\\s*${typeName}\\s*\\|\\s*(.*?)\\s*\\|`);
+        const propMatch = oldContent.match(propRegex);
+        if (propMatch && propMatch[1].trim() !== STATUS_NOT_IMPL) {
+          propStatus = propMatch[1].trim();
+        }
+        const propName = typeName.replace(new RegExp('^' + item + '\\.'), "");
+        md += `| ${propName.padEnd(32)} | ${propStatus.padEnd(20)} |\n`;
+      });
+    } else {
+      md += `| ${item.padEnd(30)} | ${status.padEnd(20)} |\n`;
+    }
   });
 
   // Legend
