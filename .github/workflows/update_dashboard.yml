@@ -66,8 +66,8 @@ jobs:
           else
             git checkout -b dashboard
           fi
-          if [ -f ../dashboard.md.tmp ]; then
-            cp ../dashboard.md.tmp dashboard.md
+          if [ -f ../../dashboard.md.tmp ]; then
+            cp ../../dashboard.md.tmp dashboard.md
           else
             echo "No dashboard.md.tmp found, creating empty dashboard.md"
             touch dashboard.md
