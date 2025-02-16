@@ -97,7 +97,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     const declsModule = exportedDeclarations.get(moduleName);
     let moduleLink = moduleName;
     if (declsModule && declsModule.length > 0) {
-      const { line } = sourceFile.getLineAndColumnAtPos(declsModule[0].getPos());
+      const { line } = sourceFile.getLineAndColumnAtPos(declsModule[0].getStart(false));
       moduleLink = `[${moduleName}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
     }
     md += `\n## ${moduleLink}\n\n| Method | Status |\n|--------|--------|\n`;
@@ -111,7 +111,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       const decls = exportedDeclarations.get(method);
       let methodLink = method;
       if (decls && decls.length > 0) {
-        const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getPos());
+        const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getStart(false));
         methodLink = `[${method}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
       }
       md += `| ${methodLink} | ${status} |\n`;
@@ -184,7 +184,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       const declsItem = exportedDeclarations.get(item);
       let itemLink = item;
       if (declsItem && declsItem.length > 0) {
-        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getPos());
+        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getStart(false));
         itemLink = `[${item}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
       }
       md += `### ${itemLink} - ${status}\n\n`;
@@ -199,7 +199,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
         }
         const propName = nested.fullName.replace(new RegExp('^' + item + '\\.'), "");
         let propLink = propName;
-        const { line } = sourceFile.getLineAndColumnAtPos(nested.decl.getPos());
+        const { line } = sourceFile.getLineAndColumnAtPos(nested.decl.getStart(false));
         if (line) {
           propLink = `[${propName}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
         }
@@ -209,7 +209,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       const declsItem = exportedDeclarations.get(item);
       let itemLink = item;
       if (declsItem && declsItem.length > 0) {
-        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getPos());
+        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getStart(false));
         itemLink = `[${item}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
       }
       md += `| ${itemLink.padEnd(30)} | ${status.padEnd(20)} |\n`;
