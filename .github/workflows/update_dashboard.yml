@@ -50,18 +50,18 @@ jobs:
         run: |
           mv dashboard.md ../dashboard.md.tmp
 
-      - name: Checkout dashboard branch
+      - name: Checkout dashboard branch in fresh folder
         run: |
-          git fetch origin dashboard || true
-          if git show-ref --verify --quiet refs/heads/dashboard; then
-            git checkout dashboard
-          else
-            git checkout --orphan dashboard
-          fi
-          mv ../dashboard.md.tmp dashboard.md
+          mkdir dashboard_repo
+          cd dashboard_repo
+          git init
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git pull origin dashboard || true
+          cp ../dashboard.md.tmp dashboard.md
 
       - name: Commit and push dashboard.md
         run: |
+          cd dashboard_repo
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
           git add dashboard.md
