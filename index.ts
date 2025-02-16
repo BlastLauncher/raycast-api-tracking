@@ -1,5 +1,6 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { Project, Node, SyntaxKind } from "ts-morph";
 
 // Define status emojis and default status
 const STATUS_DONE = "✅ Done";
@@ -7,12 +8,11 @@ const STATUS_WIP = "🚧 Work In Progress";
 const STATUS_NOT_IMPL = "❌ Not Implemented";
 const GITHUB_BASE_URL = "./";
 
-// Import ts-morph types for dynamic extraction
-import { Project, Node, SyntaxKind } from "ts-morph";
-
 // Create a project and add the API declaration file
 const project = new Project();
-const sourceFile = project.addSourceFileAtPath("./node_modules/@raycast/api/types/index.d.ts");
+const sourceFile = project.addSourceFileAtPath(
+  "./node_modules/@raycast/api/types/index.d.ts",
+);
 
 // Extract exported declarations
 const exportedDeclarations = sourceFile.getExportedDeclarations();
@@ -24,17 +24,19 @@ const otherExports: string[] = [];
 
 // Iterate over exported declarations
 exportedDeclarations.forEach((declarations, exportName) => {
-  const hasFunction = declarations.some(decl => decl.getKindName() === "FunctionDeclaration");
-  const hasModule = declarations.some(decl => Node.isModuleDeclaration(decl));
+  const hasFunction = declarations.some(
+    (decl) => decl.getKindName() === "FunctionDeclaration",
+  );
+  const hasModule = declarations.some((decl) => Node.isModuleDeclaration(decl));
   if (hasFunction) {
     globalFunctions.push(exportName);
   } else if (hasModule) {
     const methods: string[] = [];
-    declarations.forEach(decl => {
+    declarations.forEach((decl) => {
       if (Node.isModuleDeclaration(decl)) {
         const body = decl.getBody();
         if (body && Node.isModuleBlock(body)) {
-          body.getStatements().forEach(stmt => {
+          body.getStatements().forEach((stmt) => {
             if (stmt.getKindName() === "FunctionDeclaration") {
               const ident = stmt.getFirstChildByKind(SyntaxKind.Identifier);
               if (ident) {
@@ -74,17 +76,21 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
 ## Global Functions
 
 | Method                      | Status               |
-|-----------------------------|----------------------|\n`;
+|-----------------------------|----------------------|
+`;
 
-  globalFunctions.forEach(method => {
+  globalFunctions.forEach((method) => {
     const status = getImplementationStatus(method);
     const decls = exportedDeclarations.get(method);
     let link = method;
     if (decls && decls.length > 0) {
-      const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getStart(false));
+      const { line } = sourceFile.getLineAndColumnAtPos(
+        decls[0].getStart(false),
+      );
       link = `[${method}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
     }
-    md += `| ${link.padEnd(27)} | ${status.padEnd(20)} |\n`;
+    md += `| ${link.padEnd(27)} | ${status.padEnd(20)} |
+`;
   });
 
   // Generate module sections with tables
@@ -92,30 +98,45 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     const declsModule = exportedDeclarations.get(moduleName);
     let moduleLink = moduleName;
     if (declsModule && declsModule.length > 0) {
-      const { line } = sourceFile.getLineAndColumnAtPos(declsModule[0].getStart(false));
+      const { line } = sourceFile.getLineAndColumnAtPos(
+        declsModule[0].getStart(false),
+      );
       moduleLink = `[${moduleName}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
     }
-    md += `\n## ${moduleLink}\n\n| Method | Status |\n|--------|--------|\n`;
-    methods.forEach(method => {
+    md += `
+## ${moduleLink}
+
+| Method | Status |
+|--------|--------|
+`;
+    methods.forEach((method) => {
       const status = getImplementationStatus(method, moduleName);
       const decls = exportedDeclarations.get(method);
       let methodLink = method;
       if (decls && decls.length > 0) {
-        const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getStart(false));
+        const { line } = sourceFile.getLineAndColumnAtPos(
+          decls[0].getStart(false),
+        );
         methodLink = `[${method}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
       }
-      md += `| ${methodLink} | ${status} |\n`;
+      md += `| ${methodLink} | ${status} |
+`;
     });
   }
 
   // Helper function to recursively get nested type exports from a module declaration
-  function getNestedTypes(moduleDecl: any, prefix: string = ""): { fullName: string, decl: Node }[] {
-    let results: { fullName: string, decl: Node }[] = [];
+  function getNestedTypes(
+    moduleDecl: any,
+    prefix: string = "",
+  ): { fullName: string; decl: Node }[] {
+    let results: { fullName: string; decl: Node }[] = [];
     const body = moduleDecl.getBody();
     if (body && Node.isModuleBlock(body)) {
-      body.getStatements().forEach(stmt => {
+      body.getStatements().forEach((stmt) => {
         if (Node.isModuleDeclaration(stmt)) {
-          const newPrefix = prefix ? `${prefix}.${stmt.getName()}` : stmt.getName();
+          const newPrefix = prefix
+            ? `${prefix}.${stmt.getName()}`
+            : stmt.getName();
           results = results.concat(getNestedTypes(stmt, newPrefix));
         } else {
           const text = stmt.getText();
@@ -129,9 +150,12 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
                 try {
                   const typeAlias = stmt;
                   const propSymbols = typeAlias.getType().getProperties();
-                  propSymbols.forEach(prop => {
+                  propSymbols.forEach((prop) => {
                     const propName = prop.getName();
-                    results.push({ fullName: fullName + "." + propName, decl: stmt });
+                    results.push({
+                      fullName: fullName + "." + propName,
+                      decl: stmt,
+                    });
                   });
                 } catch (e) {
                   // Ignore errors if properties cannot be extracted
@@ -148,13 +172,16 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
   }
 
   // Generate Other Exports section as table format
-  md += `\n## Other Exports\n\n`;
-  otherExports.forEach(item => {
+  md += `
+## Other Exports
+
+`;
+  otherExports.forEach((item) => {
     const decls = exportedDeclarations.get(item);
     let nestedTypes: string[] = [];
     let hasNested = false;
     if (decls) {
-      decls.forEach(decl => {
+      decls.forEach((decl) => {
         if (Node.isModuleDeclaration(decl)) {
           const types = getNestedTypes(decl, item);
           if (types.length > 0) {
@@ -165,7 +192,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       });
     }
     let status = STATUS_NOT_IMPL;
-    const regex = new RegExp(`\\|\\s*${item}\\s*\\|\\s*(.*?)\\s*\\|`);
+    const regex = new RegExp(`\|\s*${item}\s*\|\s*(.*?)\s*\|`);
     const match = oldContent.match(regex);
     if (match && match[1].trim() !== STATUS_NOT_IMPL) {
       status = match[1].trim();
@@ -174,30 +201,45 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       const declsItem = exportedDeclarations.get(item);
       let itemLink = item;
       if (declsItem && declsItem.length > 0) {
-        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getStart(false));
+        const { line } = sourceFile.getLineAndColumnAtPos(
+          declsItem[0].getStart(false),
+        );
         itemLink = `[${item}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
       }
-      md += `### ${itemLink} - ${status}\n\n`;
-      md += `| Property                         | Status               |\n`;
-      md += `|----------------------------------|----------------------|\n`;
-      nestedTypes.forEach(nested => {
-        const propName = nested.fullName.replace(new RegExp('^' + item + '\\.'), "");
+      md += `### ${itemLink} - ${status}
+
+`;
+      md += `| Property                         | Status               |
+`;
+      md += `|----------------------------------|----------------------|
+`;
+      nestedTypes.forEach((nested) => {
+        const propName = nested.fullName.replace(
+          new RegExp("^" + item + "\."),
+          "",
+        );
         const propStatus = getImplementationStatus(propName, item);
         let propLink = propName;
-        const { line } = sourceFile.getLineAndColumnAtPos(nested.decl.getStart(false));
+        const { line } = sourceFile.getLineAndColumnAtPos(
+          nested.decl.getStart(false),
+        );
         if (line) {
           propLink = `[${propName}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
         }
-        md += `| ${propLink.padEnd(32)} | ${propStatus.padEnd(20)} |\n`;
+        md += `| ${propLink.padEnd(32)} | ${propStatus.padEnd(20)} |
+`;
       });
     } else {
       const declsItem = exportedDeclarations.get(item);
       let itemLink = item;
       if (declsItem && declsItem.length > 0) {
-        const { line } = sourceFile.getLineAndColumnAtPos(declsItem[0].getStart(false));
+        const { line } = sourceFile.getLineAndColumnAtPos(
+          declsItem[0].getStart(false),
+        );
         itemLink = `[${item}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
       }
-      md += `| ${itemLink.padEnd(30)} | ${status.padEnd(20)} |\n`;
+      md += `| ${itemLink.padEnd(30)} | ${status.padEnd(20)} |
+`;
     }
   });
 
@@ -216,16 +258,18 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
 
 const args = process.argv.slice(2);
 let repoPath = "../blast/packages/blast-api";
-const repoArgIndex = args.findIndex(arg => arg === "-r" || arg === "--repo");
-if (repoArgIndex !== -1 && args[repoArgIndex+1]) {
-  repoPath = args[repoArgIndex+1];
+const repoArgIndex = args.findIndex((arg) => arg === "-r" || arg === "--repo");
+if (repoArgIndex !== -1 && args[repoArgIndex + 1]) {
+  repoPath = args[repoArgIndex + 1];
 }
 if (!fs.existsSync(repoPath)) {
   console.error(`Repository path '${repoPath}' not found.`);
   process.exit(1);
 }
 function getDeepValue(obj: any, key: string): any {
-  return key.split('.').reduce((acc, part) => (acc ? acc[part] : undefined), obj);
+  return key
+    .split(".")
+    .reduce((acc, part) => (acc ? acc[part] : undefined), obj);
 }
 
 function getImplementationStatus(name: string, moduleName?: string): string {
@@ -252,7 +296,9 @@ function showHelp() {
   console.log("Usage: index.ts [options]");
   console.log("");
   console.log("Options:");
-  console.log("  -w, --write   Regenerate dashboard markdown, overwriting dashboard.md file");
+  console.log(
+    "  -w, --write   Regenerate dashboard markdown, overwriting dashboard.md file",
+  );
   console.log("  -h, --help    Show this help message");
 }
 
@@ -266,10 +312,14 @@ const outputPath = path.join(__dirname, "dashboard.md");
 if (args.includes("-w") || args.includes("--write")) {
   fs.writeFileSync(
     outputPath,
-    generateDashboardMarkdown(fs.existsSync(outputPath) ? fs.readFileSync(outputPath, "utf8") : ""),
-    "utf8"
+    generateDashboardMarkdown(
+      fs.existsSync(outputPath) ? fs.readFileSync(outputPath, "utf8") : "",
+    ),
+    "utf8",
   );
   console.log("Dashboard markdown generated at:", outputPath);
 } else {
-  console.log("Skipping markdown generation. Use -w or --write to regenerate dashboard.md file.");
+  console.log(
+    "Skipping markdown generation. Use -w or --write to regenerate dashboard.md file.",
+  );
 }
