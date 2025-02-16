@@ -5,7 +5,7 @@ import * as path from "path";
 const STATUS_DONE = "✅ Done";
 const STATUS_WIP = "🚧 Work In Progress";
 const STATUS_NOT_IMPL = "❌ Not Implemented";
-const GITHUB_BASE_URL = "https://github.com/BlastLauncher/raycast-api-tracking/blob/main/";
+const GITHUB_BASE_URL = "./";
 
 // Import ts-morph types for dynamic extraction
 import { Project, Node, SyntaxKind } from "ts-morph";
@@ -86,7 +86,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     const decls = exportedDeclarations.get(method);
     let link = method;
     if (decls && decls.length > 0) {
-      const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getPos());
+      const { line } = sourceFile.getLineAndColumnAtPos(decls[0].getStart(false));
       link = `[${method}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
     }
     md += `| ${link.padEnd(27)} | ${status.padEnd(20)} |\n`;
