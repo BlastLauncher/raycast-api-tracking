@@ -45,7 +45,7 @@ jobs:
 
       - name: Generate dashboard markdown
         run: |
-          bun run index.ts -w --repo $(pwd)/blast_clone/packages/blast-api/dist
+          bun run index.ts -w --repo $(pwd)/blast_clone/packages/blast-api
       - name: Preserve dashboard.md
         run: |
           mv dashboard.md ../dashboard.md.tmp
