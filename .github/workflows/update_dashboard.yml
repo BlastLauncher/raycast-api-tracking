@@ -67,17 +67,17 @@ jobs:
             git checkout -b dashboard
           fi
           if [ -f ../../dashboard.md.tmp ]; then
-            cp ../../dashboard.md.tmp dashboard.md
+            cp ../../dashboard.md.tmp README.md
           else
-            echo "No dashboard.md.tmp found, creating empty dashboard.md"
-            touch dashboard.md
+            echo "No dashboard.md.tmp found, creating empty README.md"
+            touch README.md
           fi
 
-      - name: Commit and push dashboard.md
+      - name: Commit and push README.md
         run: |
           cd dashboard_repo
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
-          git add dashboard.md
-          git commit -m "Update dashboard.md [skip ci]" || echo "No changes to commit"
+          git add README.md
+          git commit -m "Update README.md [skip ci]" || echo "No changes to commit"
           git push --set-upstream origin dashboard
