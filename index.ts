@@ -220,6 +220,10 @@ const repoArgIndex = args.findIndex(arg => arg === "-r" || arg === "--repo");
 if (repoArgIndex !== -1 && args[repoArgIndex+1]) {
   repoPath = args[repoArgIndex+1];
 }
+if (!fs.existsSync(repoPath)) {
+  console.error(`Repository path '${repoPath}' not found.`);
+  process.exit(1);
+}
 function getDeepValue(obj: any, key: string): any {
   return key.split('.').reduce((acc, part) => (acc ? acc[part] : undefined), obj);
 }
