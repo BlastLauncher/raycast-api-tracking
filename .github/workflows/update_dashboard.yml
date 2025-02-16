@@ -41,6 +41,7 @@ jobs:
         run: |
           cd blast_clone
           pnpm install --frozen-lockfile
+          pnpm run build
 
       - name: Generate dashboard markdown
         run: |
