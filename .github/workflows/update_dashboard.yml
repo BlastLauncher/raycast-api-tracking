@@ -56,7 +56,7 @@ jobs:
           if git show-ref --verify --quiet refs/heads/dashboard; then
             git checkout dashboard
           else
-            git checkout -b dashboard
+            git checkout --orphan dashboard
           fi
           mv ../dashboard.md.tmp dashboard.md
 
