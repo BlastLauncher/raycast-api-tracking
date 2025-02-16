@@ -60,7 +60,12 @@ jobs:
           cd dashboard_repo
           git init
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git pull origin dashboard || echo "dashboard branch does not exist, creating new"
+          git fetch origin dashboard || true
+          if git ls-remote --exit-code origin dashboard; then
+            git checkout dashboard
+          else
+            git checkout -b dashboard
+          fi
           if [ -f ../dashboard.md.tmp ]; then
             cp ../dashboard.md.tmp dashboard.md
           else
