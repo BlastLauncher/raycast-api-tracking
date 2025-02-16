@@ -16,4 +16,4 @@ bun run index.ts -w -r ../blast/packages/blast-api/
 
 ## Dashboard
 
-You can view the API progress dashboard [here](dashboard.md).
+You can view the API progress dashboard [here](https://github.com/BlastLauncher/raycast-api-tracking/blob/dashboard/README.md).
