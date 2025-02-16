@@ -48,7 +48,11 @@ jobs:
           bun run index.ts -w --repo $(pwd)/blast_clone/packages/blast-api
       - name: Preserve dashboard.md
         run: |
-          mv dashboard.md ../dashboard.md.tmp
+          if [ -f dashboard.md ]; then
+            mv dashboard.md ../dashboard.md.tmp
+          else
+            echo "dashboard.md not found, skipping move"
+          fi
 
       - name: Checkout dashboard branch in fresh folder
         run: |
@@ -56,8 +60,13 @@ jobs:
           cd dashboard_repo
           git init
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git pull origin dashboard || true
-          cp ../dashboard.md.tmp dashboard.md
+          git pull origin dashboard || echo "dashboard branch does not exist, creating new"
+          if [ -f ../dashboard.md.tmp ]; then
+            cp ../dashboard.md.tmp dashboard.md
+          else
+            echo "No dashboard.md.tmp found, creating empty dashboard.md"
+            touch dashboard.md
+          fi
 
       - name: Commit and push dashboard.md
         run: |
