@@ -37,7 +37,7 @@
 | [trash](./api-index.d.ts#L8512) | ❌ Not Implemented    |
 | [updateCommandMetadata](./api-index.d.ts#L8578) | ❌ Not Implemented    |
 | [useActionPanel](./api-index.d.ts#L8585) | ❌ Not Implemented    |
-| [useNavigation](./api-index.d.ts#L8641) | ❌ Not Implemented    |
+| [useNavigation](./api-index.d.ts#L8641) | ✅ Done               |
 
 ## [AI](./api-index.d.ts#L436)
 
@@ -66,10 +66,10 @@
 
 | Method | Status |
 |--------|--------|
-| allItems | ❌ Not Implemented |
-| getItem | ❌ Not Implemented |
-| setItem | ❌ Not Implemented |
-| removeItem | ❌ Not Implemented |
+| allItems | ✅ Done |
+| getItem | ✅ Done |
+| setItem | ✅ Done |
+| removeItem | ✅ Done |
 | clear | ❌ Not Implemented |
 
 ## [WindowManagement](./api-index.d.ts#L8646)
@@ -289,7 +289,7 @@
 | [ItemReference](./api-index.d.ts#L2582) | ❌ Not Implemented    |
 | [Event](./api-index.d.ts#L2586)  | ❌ Not Implemented    |
 | [Event.Type](./api-index.d.ts#L2593) | ❌ Not Implemented    |
-| [TextField](./api-index.d.ts#L2661) | ❌ Not Implemented    |
+| [TextField](./api-index.d.ts#L2661) | ✅ Done               |
 | [TextField.Props](./api-index.d.ts#L2666) | ❌ Not Implemented    |
 | [TextField.Props.placeholder](./api-index.d.ts#L2666) | ❌ Not Implemented    |
 | [TextField.Props.id](./api-index.d.ts#L2666) | ❌ Not Implemented    |
@@ -601,7 +601,7 @@
 | [Dropdown.Section.Props](./api-index.d.ts#L6084) | ❌ Not Implemented    |
 | [Dropdown.Section.Props.children](./api-index.d.ts#L6084) | ❌ Not Implemented    |
 | [Dropdown.Section.Props.title](./api-index.d.ts#L6084) | ❌ Not Implemented    |
-| [Item.Accessory](./api-index.d.ts#L6104) | ❌ Not Implemented    |
+| [Item.Accessory](./api-index.d.ts#L6104) | ✅ Done               |
 | [Item.Props](./api-index.d.ts#L6108) | ❌ Not Implemented    |
 | [Item.Props.id](./api-index.d.ts#L6108) | ❌ Not Implemented    |
 | [Item.Props.title](./api-index.d.ts#L6108) | ❌ Not Implemented    |

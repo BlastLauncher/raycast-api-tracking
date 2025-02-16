@@ -77,12 +77,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
 |-----------------------------|----------------------|\n`;
 
   globalFunctions.forEach(method => {
-    let status = STATUS_NOT_IMPL;
-    const regex = new RegExp(`\\|\\s*${method}\\s*\\|\\s*(.*?)\\s*\\|`);
-    const match = oldContent.match(regex);
-    if (match && match[1].trim() !== STATUS_NOT_IMPL) {
-      status = match[1].trim();
-    }
+    const status = getImplementationStatus(method);
     const decls = exportedDeclarations.get(method);
     let link = method;
     if (decls && decls.length > 0) {
@@ -102,12 +97,7 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
     }
     md += `\n## ${moduleLink}\n\n| Method | Status |\n|--------|--------|\n`;
     methods.forEach(method => {
-      let status = STATUS_NOT_IMPL;
-      const regex = new RegExp(`\\|\\s*${method}\\s*\\|\\s*(.*?)\\s*\\|`);
-      const match = oldContent.match(regex);
-      if (match && match[1].trim() !== STATUS_NOT_IMPL) {
-        status = match[1].trim();
-      }
+      const status = getImplementationStatus(method, moduleName);
       const decls = exportedDeclarations.get(method);
       let methodLink = method;
       if (decls && decls.length > 0) {
@@ -191,13 +181,8 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       md += `| Property                         | Status               |\n`;
       md += `|----------------------------------|----------------------|\n`;
       nestedTypes.forEach(nested => {
-        let propStatus = STATUS_NOT_IMPL;
-        const propRegex = new RegExp(`\\|\\s*${nested.fullName}\\s*\\|\\s*(.*?)\\s*\\|`);
-        const propMatch = oldContent.match(propRegex);
-        if (propMatch && propMatch[1].trim() !== STATUS_NOT_IMPL) {
-          propStatus = propMatch[1].trim();
-        }
         const propName = nested.fullName.replace(new RegExp('^' + item + '\\.'), "");
+        const propStatus = getImplementationStatus(propName, item);
         let propLink = propName;
         const { line } = sourceFile.getLineAndColumnAtPos(nested.decl.getStart(false));
         if (line) {
@@ -230,6 +215,34 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
 }
 
 const args = process.argv.slice(2);
+let repoPath = "../blast/packages/blast-api";
+const repoArgIndex = args.findIndex(arg => arg === "-r" || arg === "--repo");
+if (repoArgIndex !== -1 && args[repoArgIndex+1]) {
+  repoPath = args[repoArgIndex+1];
+}
+function getDeepValue(obj: any, key: string): any {
+  return key.split('.').reduce((acc, part) => (acc ? acc[part] : undefined), obj);
+}
+
+function getImplementationStatus(name: string, moduleName?: string): string {
+  let blastApi: any;
+  try {
+    // Import all implementations from the index module in dist
+    blastApi = require(path.join(repoPath, "dist", "index.js"));
+  } catch (e) {
+    return STATUS_NOT_IMPL;
+  }
+  let value;
+  if (moduleName) {
+    if (blastApi[moduleName] === undefined) {
+      return STATUS_NOT_IMPL;
+    }
+    value = getDeepValue(blastApi[moduleName], name);
+  } else {
+    value = getDeepValue(blastApi, name);
+  }
+  return value !== undefined ? STATUS_DONE : STATUS_NOT_IMPL;
+}
 
 function showHelp() {
   console.log("Usage: index.ts [options]");
