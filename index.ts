@@ -119,8 +119,8 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
   }
 
   // Helper function to recursively get nested type exports from a module declaration
-  function getNestedTypes(moduleDecl: any, prefix: string = ""): string[] {
-    let results: string[] = [];
+  function getNestedTypes(moduleDecl: any, prefix: string = ""): { fullName: string, decl: Node }[] {
+    let results: { fullName: string, decl: Node }[] = [];
     const body = moduleDecl.getBody();
     if (body && Node.isModuleBlock(body)) {
       body.getStatements().forEach(stmt => {
@@ -132,23 +132,23 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
           const match = text.match(/export type ([A-Za-z0-9_]+)/);
           if (match) {
             const typeName = match[1];
+            let fullName = prefix ? `${prefix}.${typeName}` : typeName;
             if (typeName === "Props") {
-              results.push(prefix ? `${prefix}.Props` : "Props");
-              // If this is a TypeAliasDeclaration, try to extract its properties recursively
+              results.push({ fullName, decl: stmt });
               if (stmt.getKindName() === "TypeAliasDeclaration") {
                 try {
                   const typeAlias = stmt;
                   const propSymbols = typeAlias.getType().getProperties();
                   propSymbols.forEach(prop => {
                     const propName = prop.getName();
-                    results.push(prefix ? `${prefix}.Props.${propName}` : `Props.${propName}`);
+                    results.push({ fullName: fullName + "." + propName, decl: stmt });
                   });
                 } catch (e) {
                   // Ignore errors if properties cannot be extracted
                 }
               }
             } else {
-              results.push(prefix ? `${prefix}.${typeName}` : typeName);
+              results.push({ fullName, decl: stmt });
             }
           }
         }
@@ -190,18 +190,17 @@ function generateDashboardMarkdown(oldContent: string = ""): string {
       md += `### ${itemLink} - ${status}\n\n`;
       md += `| Property                         | Status               |\n`;
       md += `|----------------------------------|----------------------|\n`;
-      nestedTypes.forEach(typeName => {
+      nestedTypes.forEach(nested => {
         let propStatus = STATUS_NOT_IMPL;
-        const propRegex = new RegExp(`\\|\\s*${typeName}\\s*\\|\\s*(.*?)\\s*\\|`);
+        const propRegex = new RegExp(`\\|\\s*${nested.fullName}\\s*\\|\\s*(.*?)\\s*\\|`);
         const propMatch = oldContent.match(propRegex);
         if (propMatch && propMatch[1].trim() !== STATUS_NOT_IMPL) {
           propStatus = propMatch[1].trim();
         }
-        const propName = typeName.replace(new RegExp('^' + item + '\\.'), "");
-        const declsProp = exportedDeclarations.get(typeName);
+        const propName = nested.fullName.replace(new RegExp('^' + item + '\\.'), "");
         let propLink = propName;
-        if (declsProp && declsProp.length > 0) {
-          const { line } = sourceFile.getLineAndColumnAtPos(declsProp[0].getPos());
+        const { line } = sourceFile.getLineAndColumnAtPos(nested.decl.getPos());
+        if (line) {
           propLink = `[${propName}](${GITHUB_BASE_URL}api-index.d.ts#L${line})`;
         }
         md += `| ${propLink.padEnd(32)} | ${propStatus.padEnd(20)} |\n`;
